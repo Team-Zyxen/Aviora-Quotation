@@ -14,6 +14,11 @@ import {
   AlertTriangle,
   Eye,
   EyeOff,
+  Plane,
+  ShieldCheck,
+  TrendingUp,
+  Lock,
+  BookOpen,
 } from 'lucide-react'
 
 export default function LoginPage() {
@@ -48,76 +53,95 @@ export default function LoginPage() {
 
   return (
     <div className="h-screen w-screen overflow-hidden grid grid-cols-1 lg:grid-cols-12 bg-slate-50 font-sans">
-      {/* LEFT PANEL: Clean, Premium Corporate Blue Brand Showcase */}
-      <div className="hidden lg:flex lg:col-span-6 xl:col-span-6 flex-col justify-between p-10 xl:p-14 bg-[#0f4383] text-white relative overflow-hidden">
+      {/* LEFT PANEL: AEROVERSE-Style Aviation & Finance Brand Showcase */}
+      <div className="hidden lg:flex lg:col-span-7 xl:col-span-7 flex-col justify-between p-10 xl:p-14 bg-cover bg-center bg-[url('/login-bg.jpg')] text-white relative overflow-hidden font-aeroverse">
+        {/* Soft Light Overlay for Optimal Text Readability & Image Vibrancy */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/25 to-slate-950/35 z-0" />
+
+        {/* Top Right Dot Grid Matrix */}
+        <div className="absolute top-8 right-8 z-10 grid grid-cols-6 gap-2 opacity-25">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <div key={i} className="w-1 h-1 rounded-full bg-white" />
+          ))}
+        </div>
+
         {/* Top Header Badge */}
-        <div className="relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-2xs font-bold uppercase tracking-wider bg-white/10 text-white border border-white/20">
-            <SlidersHorizontal className="w-3.5 h-3.5" />
-            FINANCE &amp; FEE MANAGEMENT PLATFORM
+        <div className="relative z-10 space-y-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-2xs font-semibold uppercase tracking-wider bg-slate-950/40 text-slate-200 border border-slate-700/50 backdrop-blur-sm">
+            <Plane className="w-3.5 h-3.5 text-amber-400" />
+            DGCA EXAMINATION &amp; ASSESSMENT PLATFORM
           </div>
 
-          <div className="space-y-3">
-            <h1 className="text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Aviora Finance Portal
-            </h1>
-            <p className="text-sm text-blue-100/90 leading-relaxed font-normal max-w-lg">
-              Enterprise financial infrastructure engineered for student fee ledgers, automated tax invoicing, faculty payroll, and real-time revenue analytics.
+          <div className="space-y-1.5">
+            {/* Sleek Medium/Semibold Italic Title */}
+            <div className="flex items-center tracking-tight font-semibold italic text-4xl sm:text-5xl text-white drop-shadow-sm">
+              <span className="font-aeroverse">AERO</span>
+              <span className="font-aeroverse text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">
+                VERSE
+              </span>
+            </div>
+
+            {/* Refined Thin Tagline matching reference image */}
+            <p className="text-2xs sm:text-xs font-medium italic text-amber-300/85 tracking-[0.35em] uppercase pt-0.5">
+              ELEVATE. EXAMINE. EXCEL.
+            </p>
+
+            <p className="text-2xs sm:text-xs text-slate-300/85 leading-relaxed font-normal max-w-sm pt-2">
+              A next-generation DGCA examination portal built for aspiring aviators. Experience real-world test simulations, intelligent analytics, and seamless performance tracking.
             </p>
           </div>
         </div>
 
-        {/* 3 Clean Feature Highlight Blocks */}
-        <div className="relative z-10 my-6 space-y-6 max-w-lg">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-              <FileText className="w-5 h-5 text-blue-100" />
+        {/* 3 Refined Feature Highlight Blocks matching reference design */}
+        <div className="relative z-10 my-4 space-y-3.5 max-w-md">
+          <div className="flex items-start gap-3.5">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <ShieldCheck className="w-4.5 h-4.5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Quotations &amp; Tax Invoicing</h3>
-              <p className="text-xs text-blue-100/80 mt-0.5 leading-normal">
-                Professional GST tax invoices and quotations generated and tracked automatically.
+              <h3 className="text-xs sm:text-sm font-semibold text-white">DGCA-Aligned Examinations</h3>
+              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
+                Precision-engineered tests matching DGCA standards across all subjects and modules.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-              <CreditCard className="w-5 h-5 text-blue-100" />
+          <div className="flex items-start gap-3.5">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <BookOpen className="w-4.5 h-4.5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Fee Collection &amp; Ledger</h3>
-              <p className="text-xs text-blue-100/80 mt-0.5 leading-normal">
-                Accurate, real-time student balance tracking, receipt generation, and fee schedule ledgers.
+              <h3 className="text-xs sm:text-sm font-semibold text-white">Smart Practice &amp; Prep</h3>
+              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
+                Extensive subject banks, timed mocks, and topic-wise practice to master every concept.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-              <BarChart3 className="w-5 h-5 text-blue-100" />
+          <div className="flex items-start gap-3.5">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <BarChart3 className="w-4.5 h-4.5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Payroll &amp; Analytics</h3>
-              <p className="text-xs text-blue-100/80 mt-0.5 leading-normal">
-                Faculty salary structures, monthly payslips, and executive revenue reports in one place.
+              <h3 className="text-xs sm:text-sm font-semibold text-white">Performance Intelligence</h3>
+              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
+                Detailed analytics, accuracy insights, and leaderboards to track and elevate your performance.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Status Bar */}
-        <div className="relative z-10 pt-6 border-t border-white/15 flex items-center justify-between text-2xs text-blue-100/80">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span className="font-semibold">Encrypted &amp; Audit-Ready Financial System</span>
+        {/* Bottom Lock Pill Badge matching reference design */}
+        <div className="relative z-10 pt-1">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-2xs font-medium text-slate-300 bg-slate-950/40 border border-slate-700/50 backdrop-blur-sm">
+            <Lock className="w-3.5 h-3.5 text-amber-400" />
+            <span>High-Security • Encrypted • Reliable</span>
           </div>
-          <span className="font-medium">Aviora Finance System</span>
         </div>
       </div>
 
       {/* RIGHT PANEL: Sign In Card Container */}
-      <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-slate-50 overflow-y-auto lg:overflow-hidden h-full">
+      <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-slate-50 overflow-y-auto lg:overflow-hidden h-full">
         <div className="w-full max-w-md mx-auto my-auto space-y-6">
           {/* Logo Header */}
           <div className="text-center">
@@ -193,9 +217,23 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#13325b] hover:bg-[#0b2240] transition-colors shadow-md cursor-pointer disabled:opacity-50"
+                className="group relative w-full py-3.5 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#0a1e3f] via-[#0f2c59] to-[#0a1e3f] hover:from-[#071733] hover:via-[#0c234a] hover:to-[#071733] shadow-md hover:shadow-lg shadow-navy-950/25 transition-all duration-300 ease-out cursor-pointer disabled:opacity-50 overflow-hidden flex items-center justify-center hover:scale-[1.01]"
               >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : 'Sign In'}
+                {/* Light Sweep Shimmer Flare Effect */}
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+                {loading ? (
+                  <div className="flex items-center justify-center gap-2 relative z-10">
+                    <Loader2 className="w-4.5 h-4.5 animate-spin text-amber-400" />
+                    <span>Taking Off...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-2.5 relative z-10">
+                    {/* Gold Horizontal Flight Plane Icon with Hover Slide & Click Takeoff to Right End */}
+                    <Plane className="w-4.5 h-4.5 text-amber-400 shrink-0 transform rotate-45 group-hover:translate-x-2 group-active:translate-x-36 sm:group-active:translate-x-44 transition-transform duration-300 ease-out drop-shadow-2xs" />
+                    <span className="font-semibold text-white tracking-wide">Take Off</span>
+                  </div>
+                )}
               </button>
             </form>
 
@@ -219,7 +257,7 @@ export default function LoginPage() {
                 <img
                   src="/zyxen-logo.png"
                   alt="ZYXEN"
-                  className="h-5 w-auto object-contain bg-black px-1.5 py-0.5 rounded shrink-0 shadow-2xs"
+                  className="w-4 h-4 aspect-square object-contain bg-black p-0.5 rounded shrink-0"
                 />
                 <span className="font-extrabold text-xs">ZYXEN</span>
               </a>

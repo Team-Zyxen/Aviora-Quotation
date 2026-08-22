@@ -63,37 +63,40 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 12,
-    marginBottom: 10,
+    paddingBottom: 6,
+    marginBottom: 8,
   },
   headerLeft: {
-    width: '74%',
+    flex: 1,
+    paddingRight: 14,
+    justifyContent: 'center',
   },
   headerRight: {
-    width: '24%',
+    width: 120,
     alignItems: 'flex-end',
+    justifyContent: 'center',
   },
   companyLogo: {
     width: 115,
-    height: 55,
+    height: 52,
     objectFit: 'contain',
   },
   companyAddress: {
     fontSize: 9.5,
     fontWeight: 'bold',
     color: pdfColors.navy,
-    lineHeight: 1.35,
+    lineHeight: 1.4,
   },
   taxLine: {
     fontSize: 9,
     fontWeight: 'bold',
     color: pdfColors.navy,
-    marginTop: 3,
+    marginTop: 4,
   },
   headerDivider: {
     borderBottomWidth: 0.8,
     borderBottomColor: pdfColors.lineDivider,
-    marginBottom: 14,
+    marginBottom: 12,
   },
   docTitle: {
     fontSize: 28,
@@ -246,26 +249,29 @@ function getLogoDataUri(): string | null {
   return null
 }
 
-// Header Component matching exact reference design
+// Header Component matching exact reference design with dynamic GST/CIN space allocation
 export function PdfHeader({ settings }: { settings?: Partial<CompanySettings> | null }) {
   const address =
     settings?.address ||
     settings?.company_address ||
-    'Block No 5, 8-5-255/66, Inner Ring Road,\nDefence Colony, Hyderabad, TG, 500079'
-  const cin = settings?.cin_number || settings?.cin || 'U85500TS2025PTC198846'
-  const gstin = settings?.gstin || '0987654321417136638223'
+    'Block No 5, 8-5-255/66, Inner Ring Road, Defence Colony, Hyderabad, TG, 500079'
+  const cin = settings?.cin_number || settings?.cin || ''
+  const gstin = settings?.gstin || ''
 
-  // Respect exact checkbox directives
+  // Respect exact checkbox directives & string presence
   const showCin = settings?.show_cin_on_documents !== false && !!cin
   const showGst = settings?.show_gst_on_documents !== false && !!gstin
+  const hasTaxDetails = showCin || showGst
 
   const logoDataUri = getLogoDataUri()
 
   return (
     <View>
       <View style={pdfStyles.headerContainer}>
-        <View style={pdfStyles.headerLeft}>
-          <Text style={pdfStyles.companyAddress}>{address}</Text>
+        <View style={[pdfStyles.headerLeft, { minHeight: 55, justifyContent: 'center' }]}>
+          <Text style={hasTaxDetails ? pdfStyles.companyAddress : [pdfStyles.companyAddress, { fontSize: 10.5, lineHeight: 1.4 }]}>
+            {address}
+          </Text>
           {showCin && <Text style={pdfStyles.taxLine}>CIN No: {cin}</Text>}
           {showGst && <Text style={pdfStyles.taxLine}>GST No: {gstin}</Text>}
         </View>

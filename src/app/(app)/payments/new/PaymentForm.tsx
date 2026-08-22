@@ -379,8 +379,8 @@ export function PaymentForm({ prefillInvoiceId }: PaymentFormProps) {
                   min={1}
                   step={1}
                   required
-                  placeholder="e.g. 50000"
-                  value={amount}
+                  placeholder="Enter payment amount"
+                  value={amount === 0 ? '' : amount}
                   onChange={(e) =>
                     setAmount(e.target.value === '' ? '' : parseFloat(e.target.value) || 0)
                   }
@@ -509,7 +509,7 @@ export function PaymentForm({ prefillInvoiceId }: PaymentFormProps) {
                 <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-2xs flex items-start gap-2">
                   <AlertTriangle className="w-4 h-4 shrink-0 text-amber-600 mt-0.5" />
                   <span>
-                    Payment amount exceeds current invoice balance. Database RPC will validate overpayment limits.
+                    Payment amount exceeds current invoice balance. Please verify payment amount.
                   </span>
                 </div>
               )}

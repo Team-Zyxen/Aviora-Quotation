@@ -232,7 +232,7 @@ export function ReportsClient() {
 
   // Export CSV Handlers
   const exportOutstandingCSV = () => {
-    const headers = ['Student ID', 'Student Name', 'Phone', 'Program', 'Invoice Ref', 'Grand Total', 'Amount Paid', 'Balance Due', 'Status']
+    const headers = ['Student ID', 'Student Name', 'Phone', 'Program', 'Invoice Ref', 'Grand Total (INR)', 'Amount Paid (INR)', 'Balance Due (INR)', 'Status']
     const rows = outstandingData.map((inv) => [
       inv.student_admission_no || inv.students?.admission_no || 'N/A',
       inv.students?.name || inv.student_name_snapshot || inv.student_name || 'Historical Student',
@@ -248,7 +248,7 @@ export function ReportsClient() {
   }
 
   const exportCollectionsCSV = () => {
-    const headers = ['Receipt No', 'Payment Date', 'Student ID', 'Student Name', 'Invoice Ref', 'Payment Mode', 'Reference No', 'Amount Paid']
+    const headers = ['Receipt No', 'Payment Date', 'Student ID', 'Student Name', 'Invoice Ref', 'Payment Mode', 'Reference No', 'Amount Paid (INR)']
     const rows = collectionsData.map((p: any) => [
       p.receipt_no,
       p.payment_date,
@@ -263,7 +263,7 @@ export function ReportsClient() {
   }
 
   const exportCourseCSV = () => {
-    const headers = ['Course Program', 'Invoices Count', 'Total Billed (₹)', 'Total Collected (₹)', 'Total Outstanding (₹)', 'Collection Rate (%)']
+    const headers = ['Course Program', 'Invoices Count', 'Total Billed (INR)', 'Total Collected (INR)', 'Total Outstanding (INR)', 'Collection Rate (%)']
     const rows = courseReportData.map((c) => {
       const rate = c.billed > 0 ? Math.round((c.collected / c.billed) * 100) : 0
       return [c.name, c.count, c.billed, c.collected, c.outstanding, `${rate}%`]
@@ -272,7 +272,7 @@ export function ReportsClient() {
   }
 
   const exportPayrollCSV = () => {
-    const headers = ['Payslip Ref', 'Month/Year', 'Faculty Name', 'Designation', 'Department', 'Gross Pay (₹)', 'Total Deductions (₹)', 'Net Pay (₹)']
+    const headers = ['Payslip Ref', 'Month/Year', 'Faculty Name', 'Designation', 'Department', 'Gross Pay (INR)', 'Total Deductions (INR)', 'Net Pay (INR)']
     const rows = payrollReportData.map((p) => [
       p.payslip_no,
       `${p.month}/${p.year}`,

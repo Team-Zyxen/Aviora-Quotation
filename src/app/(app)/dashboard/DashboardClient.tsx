@@ -74,7 +74,7 @@ export function DashboardClient() {
         </div>
         <h3 className="text-lg font-bold text-gray-900">Failed to load financial dashboard</h3>
         <p className="text-xs text-gray-500">
-          {(error as Error)?.message || 'An unexpected error occurred while calling get_dashboard_summary.'}
+          {(error as Error)?.message || 'An unexpected error occurred while loading dashboard.'}
         </p>
       </div>
     )
@@ -89,7 +89,7 @@ export function DashboardClient() {
             Executive Financial Dashboard
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
-            Authoritative real-time financial summary powered by database read engine
+            Authoritative real-time financial summary
           </p>
         </div>
 
@@ -246,57 +246,10 @@ export function DashboardClient() {
         </div>
       </div>
 
-      {/* Main Row 1: Course Program Breakdown (2 Cols) & Recent Tax Invoices (1 Col) */}
+      {/* Main Row 1: Recent Tax Invoices (2 Cols) & Course Program Breakdown (1 Col) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Course Program Fee Revenue Breakdown (2 Cols) */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-gray-200 shadow-xs space-y-4 flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-              <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-navy-700" />
-                Course Program Fee Breakdown
-              </h3>
-            </div>
-
-            {summary.course_breakdown.length === 0 ? (
-              <p className="text-xs text-gray-400 italic py-8 text-center">
-                No course breakdown data recorded for this period.
-              </p>
-            ) : (
-              <div className="overflow-x-auto border border-gray-200 rounded-lg mt-4">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-gray-50 border-b border-gray-200 text-gray-700 font-semibold uppercase tracking-wider text-2xs">
-                    <tr>
-                      <th className="px-4 py-2.5">Academic Program Track</th>
-                      <th className="px-4 py-2.5 text-right">Total Billed</th>
-                      <th className="px-4 py-2.5 text-right">Collected</th>
-                      <th className="px-4 py-2.5 text-right">Outstanding</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {summary.course_breakdown.map((cb, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50/60 transition-colors">
-                        <td className="px-4 py-3 font-medium text-gray-900">{cb.course_name}</td>
-                        <td className="px-4 py-3 text-right font-mono font-semibold text-gray-900">
-                          {formatCurrency(cb.billed_for_period)}
-                        </td>
-                        <td className="px-4 py-3 text-right font-mono font-semibold text-emerald-700">
-                          {formatCurrency(cb.collected_for_period)}
-                        </td>
-                        <td className="px-4 py-3 text-right font-mono font-bold text-rose-700">
-                          {formatCurrency(cb.outstanding_current)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Recent Tax Invoices Feed (1 Col) */}
-        <div className="lg:col-span-1 bg-white p-6 rounded-xl border border-gray-200 shadow-xs space-y-4">
+        {/* Recent Tax Invoices Feed (2 Cols) */}
+        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-gray-200 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <FileSpreadsheet className="w-4 h-4 text-navy-700" />
@@ -312,7 +265,7 @@ export function DashboardClient() {
           ) : (
             <div className="space-y-3">
               {summary.recent_invoices.map((inv) => (
-                <div key={inv.id} className="p-3 rounded-lg bg-gray-50/70 border border-gray-100 flex items-center justify-between text-xs">
+                <div key={inv.id} className="p-3 rounded-lg bg-gray-50/70 border border-gray-100 flex items-center justify-between text-xs hover:bg-gray-100/60 transition-colors">
                   <div>
                     <Link href={`/invoices/${inv.id}`} className="font-mono font-bold text-navy-900 hover:underline">
                       {inv.invoice_no}
@@ -329,6 +282,39 @@ export function DashboardClient() {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Course Program Fee Revenue Breakdown (1 Col) */}
+        <div className="lg:col-span-1 bg-white p-6 rounded-xl border border-gray-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+              <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                <GraduationCap className="w-4 h-4 text-navy-700" />
+                Course Program Fee Breakdown
+              </h3>
+            </div>
+
+            {summary.course_breakdown.length === 0 ? (
+              <p className="text-xs text-gray-400 italic py-8 text-center">
+                No course breakdown data recorded for this period.
+              </p>
+            ) : (
+              <div className="space-y-3 mt-4">
+                {summary.course_breakdown.map((cb, idx) => (
+                  <div key={idx} className="p-3 rounded-lg bg-gray-50/70 border border-gray-100 space-y-1.5 text-xs">
+                    <div className="font-semibold text-gray-900 flex justify-between items-center">
+                      <span>{cb.course_name}</span>
+                      <span className="font-mono text-rose-700 font-bold">{formatCurrency(cb.outstanding_current)} due</span>
+                    </div>
+                    <div className="flex justify-between text-2xs text-gray-500">
+                      <span>Billed: <strong className="text-gray-800 font-mono">{formatCurrency(cb.billed_for_period)}</strong></span>
+                      <span>Collected: <strong className="text-emerald-700 font-mono">{formatCurrency(cb.collected_for_period)}</strong></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

@@ -52,7 +52,7 @@ export default function AppLayout({
                   <img
                     src="/zyxen-logo.png"
                     alt="ZYXEN"
-                    className="h-5 w-auto object-contain bg-black px-1.5 py-0.5 rounded shrink-0 shadow-2xs"
+                    className="w-4 h-4 aspect-square object-contain bg-black p-0.5 rounded shrink-0"
                   />
                   <span className="font-extrabold text-xs">ZYXEN</span>
                 </a>

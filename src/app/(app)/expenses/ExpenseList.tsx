@@ -704,7 +704,7 @@ export function ExpenseList() {
                   required
                   min={1}
                   step={1}
-                  placeholder="e.g. 25000"
+                  placeholder="Enter expense amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   className="w-full rounded-lg border border-gray-300 pl-8 pr-3 py-2 text-sm font-mono font-bold text-gray-900 shadow-xs focus:ring-accent focus:border-accent"

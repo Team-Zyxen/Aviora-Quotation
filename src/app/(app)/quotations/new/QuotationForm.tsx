@@ -662,10 +662,11 @@ export function QuotationForm({ initialQuotation }: QuotationFormProps) {
                           min={0}
                           step={1}
                           required
-                          value={item.unit_price}
+                          placeholder="Enter unit price"
+                          value={item.unit_price === 0 ? '' : item.unit_price}
                           onChange={(e) =>
                             handleUpdateItem(index, {
-                              unit_price: Math.max(0, parseFloat(e.target.value) || 0),
+                              unit_price: e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0),
                             })
                           }
                           className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent bg-white"
@@ -680,10 +681,11 @@ export function QuotationForm({ initialQuotation }: QuotationFormProps) {
                           type="number"
                           min={0}
                           step={1}
-                          value={item.discount_amount}
+                          placeholder="Enter line discount"
+                          value={item.discount_amount === 0 ? '' : item.discount_amount}
                           onChange={(e) =>
                             handleUpdateItem(index, {
-                              discount_amount: Math.max(0, parseFloat(e.target.value) || 0),
+                              discount_amount: e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0),
                             })
                           }
                           className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent bg-white"
@@ -755,9 +757,10 @@ export function QuotationForm({ initialQuotation }: QuotationFormProps) {
                   type="number"
                   min={0}
                   step={1}
-                  value={overallDiscount}
+                  placeholder="Enter discount amount"
+                  value={overallDiscount === 0 ? '' : overallDiscount}
                   onChange={(e) =>
-                    setOverallDiscount(Math.max(0, parseFloat(e.target.value) || 0))
+                    setOverallDiscount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                   }
                   className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                 />
@@ -773,9 +776,10 @@ export function QuotationForm({ initialQuotation }: QuotationFormProps) {
                   min={0}
                   max={100}
                   step={0.5}
-                  value={gstPercent}
+                  placeholder="Enter GST rate %"
+                  value={gstPercent === 0 ? '' : gstPercent}
                   onChange={(e) =>
-                    setGstPercent(Math.max(0, parseFloat(e.target.value) || 0))
+                    setGstPercent(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                   }
                   className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                 />

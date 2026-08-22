@@ -75,7 +75,7 @@ export function QuotationDetail() {
     },
   })
 
-  // Convert to Invoice Mutation (Authoritative convert_quotation_to_invoice DB RPC)
+  // Convert to Invoice Mutation (Authoritative convert_quotation_to_invoice execution)
   const convertToInvoiceMutation = useMutation({
     mutationFn: async () => {
       setConversionError(null)

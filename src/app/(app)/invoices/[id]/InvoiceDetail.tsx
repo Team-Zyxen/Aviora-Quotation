@@ -141,7 +141,7 @@ export function InvoiceDetail() {
     },
   })
 
-  // Record Payment Mutation (Authoritative DB RPC execution)
+  // Record Payment Mutation (Authoritative payment execution)
   const recordPaymentMutation = useMutation({
     mutationFn: async () => {
       setPaymentError(null)
@@ -344,6 +344,16 @@ export function InvoiceDetail() {
               Edit
             </Link>
           )}
+
+          <a
+            href={`/api/invoices/${invoice.id}/pdf`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-navy-900 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg shadow-2xs transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Download PDF
+          </a>
 
           {invoice.status !== 'cancelled' && (
             <button
@@ -661,7 +671,8 @@ export function InvoiceDetail() {
                   min={1}
                   step={100}
                   required
-                  value={paymentAmount}
+                  placeholder="Enter payment amount"
+                  value={paymentAmount === 0 ? '' : paymentAmount}
                   onChange={(e) =>
                     setPaymentAmount(e.target.value === '' ? '' : parseFloat(e.target.value) || 0)
                   }

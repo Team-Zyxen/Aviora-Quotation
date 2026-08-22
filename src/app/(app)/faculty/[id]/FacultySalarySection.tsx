@@ -382,8 +382,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     min={0}
                     step={1}
                     required
-                    value={basic}
-                    onChange={(e) => setBasic(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter basic pay"
+                    value={basic === 0 ? '' : basic}
+                    onChange={(e) => setBasic(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>
@@ -394,8 +395,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     type="number"
                     min={0}
                     step={1}
-                    value={hra}
-                    onChange={(e) => setHra(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter HRA"
+                    value={hra === 0 ? '' : hra}
+                    onChange={(e) => setHra(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>
@@ -406,8 +408,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     type="number"
                     min={0}
                     step={1}
-                    value={otherAllowances}
-                    onChange={(e) => setOtherAllowances(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter allowances"
+                    value={otherAllowances === 0 ? '' : otherAllowances}
+                    onChange={(e) => setOtherAllowances(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>
@@ -418,8 +421,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     type="number"
                     min={0}
                     step={1}
-                    value={pfDeduction}
-                    onChange={(e) => setPfDeduction(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter PF deduction"
+                    value={pfDeduction === 0 ? '' : pfDeduction}
+                    onChange={(e) => setPfDeduction(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>
@@ -430,8 +434,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     type="number"
                     min={0}
                     step={1}
-                    value={ptDeduction}
-                    onChange={(e) => setPtDeduction(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter PT deduction"
+                    value={ptDeduction === 0 ? '' : ptDeduction}
+                    onChange={(e) => setPtDeduction(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>
@@ -442,8 +447,9 @@ export function FacultySalarySection({ facultyId }: FacultySalarySectionProps) {
                     type="number"
                     min={0}
                     step={1}
-                    value={tdsDeduction}
-                    onChange={(e) => setTdsDeduction(parseFloat(e.target.value) || 0)}
+                    placeholder="Enter TDS deduction"
+                    value={tdsDeduction === 0 ? '' : tdsDeduction}
+                    onChange={(e) => setTdsDeduction(e.target.value === '' ? 0 : parseFloat(e.target.value) || 0)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 shadow-xs"
                   />
                 </div>

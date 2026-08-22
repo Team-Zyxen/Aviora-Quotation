@@ -672,7 +672,7 @@ export function CourseDetail() {
                               step="0.01"
                               min="0"
                               required
-                              placeholder="0.00"
+                              placeholder="Enter amount"
                               value={newFeeHeadAmount}
                               onChange={(e) => setNewFeeHeadAmount(e.target.value)}
                               className="w-full text-xs rounded-md border border-gray-300 px-3 py-2 focus:ring-accent focus:border-accent"
@@ -1054,7 +1054,7 @@ function TermModal({
                 step="0.01"
                 min="0"
                 required
-                placeholder="0.00"
+                placeholder="Enter amount"
                 value={termFee}
                 onChange={(e) => setTermFee(e.target.value)}
                 className="block w-full rounded-lg border border-gray-300 pl-8 pr-3 py-2 text-sm shadow-xs focus:ring-accent focus:border-accent"

@@ -742,10 +742,11 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                           min={0}
                           step={1}
                           required
-                          value={item.unit_price}
+                          placeholder="Enter amount"
+                          value={item.unit_price === 0 ? '' : item.unit_price}
                           onChange={(e) =>
                             handleUpdateItem(index, {
-                              unit_price: Math.max(0, parseFloat(e.target.value) || 0),
+                              unit_price: e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0),
                             })
                           }
                           className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent bg-white"
@@ -822,9 +823,10 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     type="number"
                     min={0}
                     step={1}
-                    value={discountAmount}
+                    placeholder="Enter discount amount"
+                    value={discountAmount === 0 ? '' : discountAmount}
                     onChange={(e) =>
-                      setDiscountAmount(Math.max(0, parseFloat(e.target.value) || 0))
+                      setDiscountAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                   />
@@ -838,9 +840,10 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     type="number"
                     min={0}
                     step={1}
-                    value={scholarshipAmount}
+                    placeholder="Enter scholarship amount"
+                    value={scholarshipAmount === 0 ? '' : scholarshipAmount}
                     onChange={(e) =>
-                      setScholarshipAmount(Math.max(0, parseFloat(e.target.value) || 0))
+                      setScholarshipAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                   />
@@ -854,9 +857,10 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     type="number"
                     min={0}
                     step={1}
-                    value={couponAmount}
+                    placeholder="Enter coupon amount"
+                    value={couponAmount === 0 ? '' : couponAmount}
                     onChange={(e) =>
-                      setCouponAmount(Math.max(0, parseFloat(e.target.value) || 0))
+                      setCouponAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
                     className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                   />
@@ -873,9 +877,10 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                   min={0}
                   max={100}
                   step={0.5}
-                  value={gstPercent}
+                  placeholder="Enter GST rate %"
+                  value={gstPercent === 0 ? '' : gstPercent}
                   onChange={(e) =>
-                    setGstPercent(Math.max(0, parseFloat(e.target.value) || 0))
+                    setGstPercent(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                   }
                   className="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-xs shadow-xs focus:ring-accent focus:border-accent"
                 />

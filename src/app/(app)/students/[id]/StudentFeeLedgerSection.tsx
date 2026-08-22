@@ -54,7 +54,7 @@ export function StudentFeeLedgerSection({ studentId }: StudentFeeLedgerSectionPr
         </div>
         <h4 className="text-sm font-bold text-gray-900">Failed to load student fee ledger</h4>
         <p className="text-xs text-gray-500">
-          {(error as Error)?.message || 'An error occurred while calling get_student_ledger RPC.'}
+          {(error as Error)?.message || 'An error occurred while loading student fee ledger.'}
         </p>
       </div>
     )
@@ -75,7 +75,7 @@ export function StudentFeeLedgerSection({ studentId }: StudentFeeLedgerSectionPr
           <div>
             <h3 className="text-sm font-bold text-gray-900">Student Fee Ledger & Billing Statement</h3>
             <span className="text-2xs text-gray-400">
-              Authoritative statement generated via get_student_ledger DB RPC
+              Authoritative real-time student billing statement
             </span>
           </div>
         </div>

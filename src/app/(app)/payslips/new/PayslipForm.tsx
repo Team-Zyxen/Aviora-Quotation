@@ -144,7 +144,7 @@ export function PayslipForm({ prefillFacultyId }: PayslipFormProps) {
   const totals = calculatePayrollTotals(effectiveStructure)
   const isDuplicate = !!existingPayslip
 
-  // Generate Payslip Mutation (Authoritative DB RPC generate_payslip execution)
+  // Generate Payslip Mutation (Authoritative generate_payslip execution)
   const generatePayslipMutation = useMutation({
     mutationFn: async () => {
       setFormError(null)
@@ -303,7 +303,7 @@ export function PayslipForm({ prefillFacultyId }: PayslipFormProps) {
                 <div>
                   <strong className="block font-bold">Payslip Already Generated</strong>
                   <span>
-                    A payslip (<code className="font-mono font-bold">{existingPayslip.payslip_no}</code>) has already been generated for this faculty member for {MONTHS.find((m) => m.value === month)?.name} {year}. Database RPC will reject duplicates.
+                    A payslip (<code className="font-mono font-bold">{existingPayslip.payslip_no}</code>) has already been generated for this faculty member for {MONTHS.find((m) => m.value === month)?.name} {year}. Duplicate payslips cannot be generated.
                   </span>
                 </div>
               </div>
@@ -315,7 +315,7 @@ export function PayslipForm({ prefillFacultyId }: PayslipFormProps) {
                 <div>
                   <strong className="block font-bold">No Effective Salary Structure Found</strong>
                   <span>
-                    No salary structure configured for this faculty member effective on or before {monthEndDate}. Database RPC requires an active salary structure.
+                    No salary structure configured for this faculty member effective on or before {monthEndDate}. An active salary structure is required.
                   </span>
                 </div>
               </div>
