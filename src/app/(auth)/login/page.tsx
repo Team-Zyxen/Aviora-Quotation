@@ -8,17 +8,12 @@ import {
   Loader2,
   FileText,
   CreditCard,
-  BarChart3,
-  CheckCircle2,
-  SlidersHorizontal,
   AlertTriangle,
   Eye,
   EyeOff,
   Plane,
-  ShieldCheck,
   TrendingUp,
   Lock,
-  BookOpen,
 } from 'lucide-react'
 
 export default function LoginPage() {
@@ -53,7 +48,7 @@ export default function LoginPage() {
 
   return (
     <div className="h-screen w-screen overflow-hidden grid grid-cols-1 lg:grid-cols-12 bg-slate-50 font-sans">
-      {/* LEFT PANEL: AEROVERSE-Style Aviation & Finance Brand Showcase */}
+      {/* LEFT PANEL: Aviora Aviation Academy Finance System Showcase */}
       <div className="hidden lg:flex lg:col-span-7 xl:col-span-7 flex-col justify-between p-10 xl:p-14 bg-cover bg-center bg-[url('/login-bg.jpg')] text-white relative overflow-hidden font-aeroverse">
         {/* Soft Light Overlay for Optimal Text Readability & Image Vibrancy */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/25 to-slate-950/35 z-0" />
@@ -69,73 +64,73 @@ export default function LoginPage() {
         <div className="relative z-10 space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-2xs font-semibold uppercase tracking-wider bg-slate-950/40 text-slate-200 border border-slate-700/50 backdrop-blur-sm">
             <Plane className="w-3.5 h-3.5 text-amber-400" />
-            DGCA EXAMINATION &amp; ASSESSMENT PLATFORM
+            AVIORA AVIATION ACADEMY • FINANCE SYSTEM
           </div>
 
           <div className="space-y-1.5">
-            {/* Sleek Medium/Semibold Italic Title */}
+            {/* Sleek Title */}
             <div className="flex items-center tracking-tight font-semibold italic text-4xl sm:text-5xl text-white drop-shadow-sm">
-              <span className="font-aeroverse">AERO</span>
-              <span className="font-aeroverse text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">
-                VERSE
+              <span className="font-aeroverse">AVIORA</span>
+              <span className="font-aeroverse text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 ml-2">
+                FINANCE
               </span>
             </div>
 
-            {/* Refined Thin Tagline matching reference image */}
+            {/* Refined Thin Tagline */}
             <p className="text-2xs sm:text-xs font-medium italic text-amber-300/85 tracking-[0.35em] uppercase pt-0.5">
-              ELEVATE. EXAMINE. EXCEL.
+              PRECISION. TRANSPARENCY. COMPLIANCE.
             </p>
 
-            <p className="text-2xs sm:text-xs text-slate-300/85 leading-relaxed font-normal max-w-sm pt-2">
-              A next-generation DGCA examination portal built for aspiring aviators. Experience real-world test simulations, intelligent analytics, and seamless performance tracking.
+            <p className="text-xs sm:text-sm text-slate-300/90 leading-relaxed font-normal max-w-md pt-2">
+              An enterprise quotation and financial management portal engineered for pilot training programs. Streamline course quotes, student ledgers, invoicing, and real-time payment tracking.
             </p>
           </div>
         </div>
 
-        {/* 3 Refined Feature Highlight Blocks matching reference design */}
-        <div className="relative z-10 my-4 space-y-3.5 max-w-md">
-          <div className="flex items-start gap-3.5">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
-              <ShieldCheck className="w-4.5 h-4.5" />
+        {/* 3 Refined Feature Highlight Blocks */}
+        <div className="relative z-10 my-4 space-y-4 max-w-lg">
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <FileText className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs sm:text-sm font-semibold text-white">DGCA-Aligned Examinations</h3>
-              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
-                Precision-engineered tests matching DGCA standards across all subjects and modules.
+              <h3 className="text-sm sm:text-base font-semibold text-white">Smart Quotation Engine</h3>
+              <p className="text-xs sm:text-sm text-slate-300/80 mt-1 leading-relaxed max-w-sm">
+                Generate instant, tailored aviation training quotations with GST breakdowns, custom discounts, and structured payment schedules.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3.5">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
-              <BookOpen className="w-4.5 h-4.5" />
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <CreditCard className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs sm:text-sm font-semibold text-white">Smart Practice &amp; Prep</h3>
-              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
-                Extensive subject banks, timed mocks, and topic-wise practice to master every concept.
+              <h3 className="text-sm sm:text-base font-semibold text-white">Fee &amp; Student Ledger Tracking</h3>
+              <p className="text-xs sm:text-sm text-slate-300/80 mt-1 leading-relaxed max-w-sm">
+                Monitor student fee collections, payment receipts, due installments, and individual student financial accounts.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3.5">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
-              <BarChart3 className="w-4.5 h-4.5" />
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-950/40 border border-slate-700/50 flex items-center justify-center shrink-0 text-amber-400 backdrop-blur-sm">
+              <TrendingUp className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs sm:text-sm font-semibold text-white">Performance Intelligence</h3>
-              <p className="text-2xs sm:text-xs text-slate-300/75 mt-0.5 leading-normal max-w-xs">
-                Detailed analytics, accuracy insights, and leaderboards to track and elevate your performance.
+              <h3 className="text-sm sm:text-base font-semibold text-white">Financial Analytics &amp; Reports</h3>
+              <p className="text-xs sm:text-sm text-slate-300/80 mt-1 leading-relaxed max-w-sm">
+                Real-time insights into academy revenue, pending collections, tax summaries, and executive financial reports.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Lock Pill Badge matching reference design */}
+        {/* Bottom Lock Pill Badge */}
         <div className="relative z-10 pt-1">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-2xs font-medium text-slate-300 bg-slate-950/40 border border-slate-700/50 backdrop-blur-sm">
             <Lock className="w-3.5 h-3.5 text-amber-400" />
-            <span>High-Security • Encrypted • Reliable</span>
+            <span>Bank-Grade Security • Audit-Compliant • Encrypted</span>
           </div>
         </div>
       </div>
