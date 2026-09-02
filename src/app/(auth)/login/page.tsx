@@ -68,11 +68,11 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            {/* Sleek Title */}
+            {/* Sleek Medium/Semibold Italic Title */}
             <div className="flex items-center tracking-tight font-semibold italic text-4xl sm:text-5xl text-white drop-shadow-sm">
-              <span className="font-aeroverse">AVIORA</span>
-              <span className="font-aeroverse text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 ml-2">
-                FINANCE
+              <span className="font-aeroverse">AERO</span>
+              <span className="font-aeroverse text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">
+                VERSE
               </span>
             </div>
 
