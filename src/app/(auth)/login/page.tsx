@@ -239,7 +239,7 @@ export default function LoginPage() {
 
           {/* Right Panel Attribution Footer (Properly Sized ZYXEN Logo) */}
           <div className="text-center space-y-1.5 pt-2">
-            <p className="text-2xs font-bold text-gray-700">© AVIORA · Aviation Training Portal</p>
+            <p className="text-2xs font-bold text-gray-700">© AVIORA · Aviation Finance Portal</p>
             <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500">
               <span>Developed &amp; maintained by</span>
               <a
