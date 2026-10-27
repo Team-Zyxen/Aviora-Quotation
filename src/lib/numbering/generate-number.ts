@@ -127,3 +127,28 @@ export async function generatePayslipNumber(
     paddedSeq,
   ].join(NUMBERING_CONFIG.SEPARATOR)
 }
+
+/**
+ * Format 5: Company Invoice (Corporate B2B Invoices)
+ * Rules: Resets every Indian Financial Year (April 1 - March 31).
+ * Format: AV/C-INV/2026-27/00001
+ */
+export async function generateCompanyInvoiceNumber(
+  date: Date | string | number = new Date(),
+  client?: SupabaseClient
+): Promise<string> {
+  const fyLabel = getFinancialYearLabel(date)
+  const seq = await getNextAtomicSequence(
+    NUMBERING_CONFIG.DOC_TYPES.COMPANY_INVOICE,
+    fyLabel,
+    client
+  )
+
+  const paddedSeq = seq.toString().padStart(NUMBERING_CONFIG.SEQUENCE_PADDING_LENGTH, '0')
+  return [
+    NUMBERING_CONFIG.DOC_PREFIX,
+    NUMBERING_CONFIG.DOC_TYPES.COMPANY_INVOICE,
+    fyLabel,
+    paddedSeq,
+  ].join(NUMBERING_CONFIG.SEPARATOR)
+}

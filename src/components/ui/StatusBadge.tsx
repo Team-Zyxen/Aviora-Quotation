@@ -6,7 +6,15 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export type StatusType = 'enquiry' | 'enrolled' | 'active' | 'completed' | 'dropped' | string
+export type StatusType =
+  | 'enquiry'
+  | 'enrolled'
+  | 'active'
+  | 'completed'
+  | 'dropped'
+  | 'accepted'
+  | 'cancelled'
+  | string
 
 interface StatusConfig {
   label?: string
@@ -30,6 +38,11 @@ const defaultStatusMap: Record<string, StatusConfig> = {
     className: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     dotClassName: 'bg-emerald-500',
   },
+  accepted: {
+    label: 'Accepted',
+    className: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    dotClassName: 'bg-emerald-500',
+  },
   completed: {
     label: 'Completed',
     className: 'bg-teal-50 text-teal-700 border-teal-200',
@@ -37,6 +50,16 @@ const defaultStatusMap: Record<string, StatusConfig> = {
   },
   dropped: {
     label: 'Dropped',
+    className: 'bg-rose-50 text-rose-700 border-rose-200',
+    dotClassName: 'bg-rose-500',
+  },
+  cancelled: {
+    label: 'Cancelled',
+    className: 'bg-rose-50 text-rose-700 border-rose-200',
+    dotClassName: 'bg-rose-500',
+  },
+  canceled: {
+    label: 'Cancelled',
     className: 'bg-rose-50 text-rose-700 border-rose-200',
     dotClassName: 'bg-rose-500',
   },

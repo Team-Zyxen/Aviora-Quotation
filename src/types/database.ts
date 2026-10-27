@@ -220,6 +220,53 @@ export interface Invoice {
   invoice_balances?: InvoiceBalance
 }
 
+export type SupportedCurrency = 'INR' | 'USD' | 'NZD' | 'PHP'
+export type CompanyInvoiceStatus = 'draft' | 'sent' | 'paid' | 'cancelled'
+
+export interface CompanyInvoiceItem {
+  id?: string
+  company_invoice_id?: string
+  description: string
+  quantity: number
+  unit_price: number
+  line_total: number
+  currency?: SupportedCurrency
+  converted_unit_price?: number
+  converted_line_total?: number
+  created_at?: string
+}
+
+export interface CompanyInvoice {
+  id: string
+  invoice_no: string
+  fy_label: string
+  company_name: string
+  company_phone: string
+  company_address?: string | null
+  company_gstin?: string | null
+  company_cin?: string | null
+  currency: SupportedCurrency
+  invoice_date: string
+  due_date: string
+  subtotal: number
+  discount_amount: number
+  gst_percent: number
+  gst_amount: number
+  grand_total: number
+  converted_currency?: SupportedCurrency | null
+  exchange_rate?: number
+  exchange_rate_date?: string
+  converted_subtotal?: number
+  converted_discount_amount?: number
+  converted_gst_amount?: number
+  converted_grand_total?: number
+  status: CompanyInvoiceStatus
+  notes?: string | null
+  created_at: string
+  created_by?: string | null
+  company_invoice_items?: CompanyInvoiceItem[]
+}
+
 export interface FacultySalaryStructure {
   id: string
   faculty_id: string

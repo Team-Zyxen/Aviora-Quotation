@@ -13,6 +13,7 @@ export const NUMBERING_CONFIG = {
     INVOICE: 'INV',
     RECEIPT: 'RCT',
     PAYSLIP: 'PAY',
+    COMPANY_INVOICE: 'C-INV',
   },
 
   // Standard zero-padding length for sequential numbers

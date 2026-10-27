@@ -62,6 +62,14 @@ export const queryKeys = {
     prefilledForPayment: (invoiceId: string) => ['prefilled-invoice-for-payment', invoiceId] as const,
   },
 
+  // Company Invoices (Dedicated Corporate B2B Invoices)
+  companyInvoices: {
+    all: ['company-invoices'] as const,
+    list: (filters?: Record<string, any>) => ['company-invoices', filters] as const,
+    detail: (id: string) => ['company-invoice', id] as const,
+    summaryMetrics: ['company-invoices-summary-metrics'] as const,
+  },
+
   // Payments
   payments: {
     all: ['payments'] as const,

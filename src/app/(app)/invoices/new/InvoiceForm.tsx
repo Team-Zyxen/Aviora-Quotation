@@ -724,6 +724,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                           step={1}
                           required
                           value={item.quantity}
+                          onWheel={(e) => e.currentTarget.blur()}
                           onChange={(e) =>
                             handleUpdateItem(index, {
                               quantity: Math.max(1, parseInt(e.target.value) || 1),
@@ -744,6 +745,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                           required
                           placeholder="Enter amount"
                           value={item.unit_price === 0 ? '' : item.unit_price}
+                          onWheel={(e) => e.currentTarget.blur()}
                           onChange={(e) =>
                             handleUpdateItem(index, {
                               unit_price: e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0),
@@ -825,6 +827,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     step={1}
                     placeholder="Enter discount amount"
                     value={discountAmount === 0 ? '' : discountAmount}
+                    onWheel={(e) => e.currentTarget.blur()}
                     onChange={(e) =>
                       setDiscountAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
@@ -842,6 +845,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     step={1}
                     placeholder="Enter scholarship amount"
                     value={scholarshipAmount === 0 ? '' : scholarshipAmount}
+                    onWheel={(e) => e.currentTarget.blur()}
                     onChange={(e) =>
                       setScholarshipAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
@@ -859,6 +863,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                     step={1}
                     placeholder="Enter coupon amount"
                     value={couponAmount === 0 ? '' : couponAmount}
+                    onWheel={(e) => e.currentTarget.blur()}
                     onChange={(e) =>
                       setCouponAmount(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                     }
@@ -879,6 +884,7 @@ export function InvoiceForm({ initialInvoice, prefillQuotationId }: InvoiceFormP
                   step={0.5}
                   placeholder="Enter GST rate %"
                   value={gstPercent === 0 ? '' : gstPercent}
+                  onWheel={(e) => e.currentTarget.blur()}
                   onChange={(e) =>
                     setGstPercent(e.target.value === '' ? 0 : Math.max(0, parseFloat(e.target.value) || 0))
                   }
