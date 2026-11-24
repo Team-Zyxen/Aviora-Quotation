@@ -25,6 +25,7 @@ export interface CreateCompanyInvoiceInput {
   companyAddress?: string | null
   companyGstin?: string | null
   companyCin?: string | null
+  bankBranch?: string | null
   currency: SupportedCurrency
   convertedCurrency?: SupportedCurrency | null
   exchangeRate?: number
@@ -156,6 +157,7 @@ export async function createCompanyInvoice(
       company_address: input.companyAddress?.trim() || null,
       company_gstin: input.companyGstin?.trim() || null,
       company_cin: input.companyCin?.trim() || null,
+      bank_branch: input.bankBranch?.trim() || null,
       currency: input.currency,
       invoice_date: invoiceDate,
       due_date: input.dueDate,
@@ -329,6 +331,7 @@ export async function updateCompanyInvoice(
       company_address: input.companyAddress?.trim() || null,
       company_gstin: input.companyGstin?.trim() || null,
       company_cin: input.companyCin?.trim() || null,
+      bank_branch: input.bankBranch?.trim() || null,
       currency: input.currency,
       invoice_date: invoiceDate,
       due_date: input.dueDate,

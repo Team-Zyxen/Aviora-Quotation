@@ -77,6 +77,15 @@ export function CompanyInvoiceDetail() {
     },
   })
 
+  // Fetch company branding & banking details
+  const { data: companySettings } = useQuery({
+    queryKey: ['company_settings'],
+    queryFn: async () => {
+      const { data } = await supabase.from('company_settings').select('*').limit(1).maybeSingle()
+      return data
+    },
+  })
+
   // Status Change Mutation
   const statusMutation = useMutation({
     mutationFn: async (status: CompanyInvoiceStatus) => {
@@ -547,6 +556,25 @@ export function CompanyInvoiceDetail() {
                 Forex Rate ({exchangeRateDate}): {exchangeRateDisplay}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Banking & Remittance Footer */}
+        <div className="p-6 bg-white border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-gray-500">
+          <div>
+            <strong className="text-gray-900 block font-semibold">
+              {companySettings?.name || companySettings?.company_name || 'Aviora Aviation Academy Pvt Ltd'}
+            </strong>
+            <span>
+              Bank: {companySettings?.bank_name || 'HDFC Bank Ltd'} | A/C:{' '}
+              {companySettings?.bank_account_number || '50200012345678'} | IFSC:{' '}
+              {companySettings?.bank_ifsc || 'HDFC0000123'} | Branch:{' '}
+              {invoice.bank_branch || companySettings?.bank_branch || 'Aerocity Corporate Branch'}
+            </span>
+          </div>
+
+          <div className="text-right font-mono text-2xs text-gray-400">
+            Ref: {invoice.invoice_no} ({invoice.fy_label})
           </div>
         </div>
       </div>

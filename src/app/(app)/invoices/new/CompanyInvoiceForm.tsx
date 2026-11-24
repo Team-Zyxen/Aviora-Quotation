@@ -152,6 +152,18 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
 
   const [companyDetails, setCompanyDetails] = useState<CompanyDetailsChangePayload | null>(null)
 
+  const handleCompanyDetailsChange = React.useCallback(
+    (payload: CompanyDetailsChangePayload) => {
+      setCompanyDetails(payload)
+    },
+    []
+  )
+
+  const initialCompanyValues = React.useMemo(() => {
+    if (!initialInvoice?.bank_branch) return undefined
+    return { bank_branch: initialInvoice.bank_branch }
+  }, [initialInvoice?.bank_branch])
+
   // Fetch exchange rate from API/helper for the given date
   const fetchRate = async (
     from: SupportedCurrency,
@@ -314,6 +326,9 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
         }
       }
 
+      const branchLocation =
+        companyDetails?.values?.bank_branch || initialInvoice?.bank_branch || null
+
       if (isEditing && initialInvoice) {
         return await updateCompanyInvoice(
           {
@@ -323,6 +338,7 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
             companyAddress,
             companyGstin,
             companyCin,
+            bankBranch: branchLocation,
             currency,
             convertedCurrency,
             exchangeRate,
@@ -347,6 +363,7 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
             companyAddress,
             companyGstin,
             companyCin,
+            bankBranch: branchLocation,
             currency,
             convertedCurrency,
             exchangeRate,
@@ -375,6 +392,9 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
     onSuccess: async (result) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.companyInvoices.all })
       queryClient.invalidateQueries({ queryKey: queryKeys.companyInvoices.detail(result.invoice_id) })
+      queryClient.invalidateQueries({ queryKey: ['company_settings_panel'] })
+      queryClient.invalidateQueries({ queryKey: ['company_settings'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.companySettings })
       success(
         isEditing ? 'Company Invoice Updated' : 'Company Invoice Created',
         `Invoice ${result.invoice_no} has been successfully ${
@@ -382,6 +402,7 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
         }.`
       )
       router.push(`/invoices/company/${result.invoice_id}`)
+      router.refresh()
     },
   })
 
@@ -391,7 +412,7 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
         <div className="flex items-center gap-3">
           <Link
-            href="/invoices"
+            href={isEditing && initialInvoice ? `/invoices/company/${initialInvoice.id}` : '/invoices'}
             className="p-2 text-gray-400 hover:text-navy-700 hover:bg-white rounded-lg border border-gray-200 shadow-xs transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -826,7 +847,11 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
           </div>
 
           {/* Card 5: Company & Document Details (Editable Panel) */}
-          <CompanyDetailsPanel onChange={setCompanyDetails} initialCollapsed={true} />
+          <CompanyDetailsPanel
+            onChange={handleCompanyDetailsChange}
+            initialCollapsed={true}
+            initialValues={initialCompanyValues}
+          />
         </div>
 
         {/* Right Sidebar: Dual Currency Tax Invoice Summary Panel */}
@@ -996,6 +1021,15 @@ export function CompanyInvoiceForm({ initialInvoice }: CompanyInvoiceFormProps) 
               >
                 Save as Working Draft
               </button>
+
+              {isEditing && initialInvoice && (
+                <Link
+                  href={`/invoices/company/${initialInvoice.id}`}
+                  className="w-full py-2 px-4 text-xs font-semibold text-center text-gray-600 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg transition-colors block"
+                >
+                  Cancel &amp; Return to Invoice
+                </Link>
+              )}
             </div>
           </div>
         </div>

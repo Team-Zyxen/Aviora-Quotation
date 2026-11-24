@@ -418,7 +418,12 @@ export function CompanyInvoicePdfDocument({ invoice, settings }: CompanyInvoiceP
 
             {/* Bank Remittance & Payment Terms (Right) */}
             <View style={{ width: '48%' }}>
-              <PdfBankDetails settings={settings} />
+              <PdfBankDetails
+                settings={{
+                  ...settings,
+                  bank_branch: invoice.bank_branch || settings?.bank_branch || 'Aerocity Corporate Branch',
+                }}
+              />
 
               <View style={{ marginTop: 4 }}>
                 <Text style={{ fontSize: 7.5, fontWeight: 'bold', color: pdfColors.navy, marginBottom: 2 }}>

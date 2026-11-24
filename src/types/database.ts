@@ -262,6 +262,7 @@ export interface CompanyInvoice {
   converted_grand_total?: number
   status: CompanyInvoiceStatus
   notes?: string | null
+  bank_branch?: string | null
   created_at: string
   created_by?: string | null
   company_invoice_items?: CompanyInvoiceItem[]
